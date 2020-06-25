@@ -3,16 +3,21 @@ package com.example.flixter.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel // annotation indicates class is Parcelable
 public class Movie {
 
     String posterPath;
     String title;
     String overview;
     String backdropPath;
+
+    // no-arg, empty constructor required for Parceler
+    public Movie() {}
 
     public Movie(JSONObject jsonObject) throws JSONException {
         posterPath = jsonObject.getString("poster_path");
