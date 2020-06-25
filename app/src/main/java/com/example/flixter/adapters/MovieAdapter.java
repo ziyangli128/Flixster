@@ -3,9 +3,7 @@ package com.example.flixter.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Parcel;
+//import android.os.Parcel;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +28,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     Context context;
     List<Movie> movies;
 
+    // MovieAdapter Constructor
     public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
         this.movies = movies;
@@ -61,12 +60,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return movies.size();
     }
 
+    // subclass ViewHolder binding to a Movie item
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
 
+        // ViewHolder Constructor
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById((R.id.tvTitle));
@@ -76,27 +77,29 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             itemView.setOnClickListener(this);
         }
 
+        // bind a movie item into a ViewHolder
         public void bind(Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
 
-//            Glide.with(context)
-//                    .load("https://courses.codepath.org/course_files/" +
-//                            "android_university_fast_track/assets/flicks_movie_placeholder.gif")
-//                    //.placeholder(R.drawable.placeholder)
-//                    .into(ivPoster);
-
+            // bind the poster image from API to ViewHolder
             String imageUrl;
             // if phone is in landscape
             if (context.getResources().getConfiguration().orientation
                     == Configuration.ORIENTATION_LANDSCAPE) {
                 // then imageUrl = back drop image
                 imageUrl = movie.getBackdropPath();
+                // load the Poster view with the accessed image, use a placeholder gif while loading
+                Glide.with(context).load(imageUrl)
+                        .placeholder(R.drawable.flicks_backdrop_placeholder).into(ivPoster);
             } else {
                 // else imageUrl = poster image
                 imageUrl = movie.getPosterPath();
+                // load the Poster view with the accessed image, use a placeholder gif while loading
+                Glide.with(context).load(imageUrl)
+                        .placeholder(R.drawable.flicks_movie_placeholder).into(ivPoster);
             }
-            Glide.with(context).load(imageUrl).into(ivPoster);
+
         }
 
         // when the user clicks on a row, show MovieDetailsActivity for the selected movie

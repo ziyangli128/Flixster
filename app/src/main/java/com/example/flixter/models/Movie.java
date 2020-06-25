@@ -11,31 +11,34 @@ import java.util.List;
 @Parcel // annotation indicates class is Parcelable
 public class Movie {
 
-    String posterPath;
+    // declare some fields for Movie object
     String title;
     String overview;
+    String posterPath;
     String backdropPath;
+    Double voteAverage;
 
     // no-arg, empty constructor required for Parceler
     public Movie() {}
 
+    // Movie constructor, initialize the fields from JSON
     public Movie(JSONObject jsonObject) throws JSONException {
-        posterPath = jsonObject.getString("poster_path");
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
+        posterPath = jsonObject.getString("poster_path");
         backdropPath = jsonObject.getString("backdrop_path");
+        voteAverage = jsonObject.getDouble("vote_average");
     }
 
+    // turn the object from JSONArray into Movie objects and store in a list
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
+        // create a list of Movie
         List<Movie> movies = new ArrayList<>();
         for (int i = 0; i < movieJsonArray.length(); ++i) {
+            // turn each JSONObject into Movie and add to the list
             movies.add(new Movie(movieJsonArray.getJSONObject(i)));
         }
         return movies;
-    }
-
-    public String getPosterPath() {
-        return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
     }
 
     public String getTitle() {
@@ -46,7 +49,15 @@ public class Movie {
         return overview;
     }
 
+    public String getPosterPath() {
+        return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
+    }
+
     public String getBackdropPath() {
         return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
+    }
+
+    public Double getVoteAverage() {
+        return voteAverage;
     }
 }
