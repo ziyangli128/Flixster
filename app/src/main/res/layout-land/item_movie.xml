@@ -23,6 +23,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/ivPoster"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         tools:text="Onward" />
 
@@ -36,5 +37,6 @@
         android:layout_toEndOf="@+id/ivPoster"
         android:ellipsize="end"
         android:maxLines="6"
+        android:textColor="#CDCCCC"
         tools:text="In a suburban fantasy world, two teenage elf brothers embark on an extraordinary quest to discover if there is still a little magic left out there." />
 </RelativeLayout>

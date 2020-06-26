@@ -17,6 +17,7 @@ import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.RequestParams;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.flixter.R;
+import com.example.flixter.databinding.ActivityMovieDetailsBinding;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,25 +32,32 @@ public class MovieDetailsActivity extends AppCompatActivity {
     // the movie to display
     Movie movie;
 
+    private ActivityMovieDetailsBinding movieDetailsBinding;
+
     public static final String TAG = "MovieTrailerActicity";
     String key;
 
     // the view objects
-    TextView tvTitle;
-    TextView tvOverview;
-    RatingBar rbVoteAverage;
-    ImageView ivVideo;
+//    TextView tvTitle;
+//    TextView tvOverview;
+//    RatingBar rbVoteAverage;
+//    ImageView ivVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
+        //setContentView(R.layout.activity_movie_details);
+        movieDetailsBinding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
+        // layout of activity is stored in a special property called root
+        View view = movieDetailsBinding.getRoot();
+        setContentView(view);
+
 
         // resolve the view objects
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvOverview = (TextView) findViewById(R.id.tvOverview);
-        rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
-        ivVideo = (ImageView) findViewById(R.id.ivVideo);
+//        tvTitle = (TextView) findViewById(R.id.tvTitle);
+//        tvOverview = (TextView) findViewById(R.id.tvOverview);
+//        rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
+//        ivVideo = (ImageView) findViewById(R.id.ivVideo);
 
         // unwrap the movie passed in via intent, using its simple name as a key
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
@@ -57,12 +65,12 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 String.format("Showing details for '%s'", movie.getTitle()));
 
         // set the title and overview
-        tvTitle.setText(movie.getTitle());
-        tvOverview.setText(movie.getOverview());
+        movieDetailsBinding.tvTitle.setText(movie.getTitle());
+        movieDetailsBinding.tvOverview.setText(movie.getOverview());
 
         // vote average is 0..10, convert to 0..5 by dividing by 2
         float voteAverage = movie.getVoteAverage().floatValue();
-        rbVoteAverage.setRating(voteAverage = voteAverage > 0 ? voteAverage / 2.0f: voteAverage);
+        movieDetailsBinding.rbVoteAverage.setRating(voteAverage = voteAverage > 0 ? voteAverage / 2.0f: voteAverage);
 
         String imageUrl;
         int radius = 30; // corner radius, higher value = more rounded
@@ -72,7 +80,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         Glide.with(this).load(imageUrl)
                 .transform(new RoundedCornersTransformation(radius, margin))
                 .placeholder(R.drawable.flicks_movie_placeholder)
-                .into(ivVideo);
+                .into(movieDetailsBinding.ivVideo);
 
         String videosUrl = "https://api.themoviedb.org/3/movie/"
                 + movie.getId().toString() +"/videos";
@@ -109,7 +117,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         });
 
         // launches MovieTrailerActivity when the backdrop image is tapped
-        ivVideo.setOnClickListener(new View.OnClickListener() {
+        movieDetailsBinding.ivVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (key != null) {
