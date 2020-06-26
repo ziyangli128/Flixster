@@ -27,7 +27,8 @@ The following **stretch** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the app functionality!
+* [x] Display a “play” overlay image over the backdrop on the details activity as a visual cue to the user
+* [x] User can see the release date of the movie in the details page.
 
 ## Video Walkthrough
 

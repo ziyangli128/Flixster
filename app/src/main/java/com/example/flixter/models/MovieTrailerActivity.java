@@ -41,17 +41,17 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
         // test video id
         final String videoId = getIntent().getStringExtra("key");
 
-
         // resolve the player view from the layout
         //YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);
         Log.i(TAG, "onCreate: " + key);
         // initialize with API key
-        movieTrailerBinding.player.initialize(getString(R.string.youtube_api_key), new YouTubePlayer.OnInitializedListener() {
+        movieTrailerBinding.player.initialize(getString(R.string.youtube_api_key),
+                new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider,
                                                 YouTubePlayer youTubePlayer, boolean b) {
                 // do any work here to cue video, play video, etc.
-                youTubePlayer.cueVideo(videoId);
+                youTubePlayer.loadVideo(videoId);
                 Log.i(TAG, "onInitializationSuccess: " + videoId);
             }
 

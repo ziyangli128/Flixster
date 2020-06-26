@@ -67,6 +67,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         // set the title and overview
         movieDetailsBinding.tvTitle.setText(movie.getTitle());
         movieDetailsBinding.tvOverview.setText(movie.getOverview());
+        movieDetailsBinding.tvReleaseDate.setText(movie.getReleaseDate());
 
         // vote average is 0..10, convert to 0..5 by dividing by 2
         float voteAverage = movie.getVoteAverage().floatValue();

@@ -16,6 +16,7 @@ public class Movie {
     String overview;
     String posterPath;
     String backdropPath;
+    String releaseDate;
     Double voteAverage;
     Integer id;
 
@@ -28,6 +29,7 @@ public class Movie {
         overview = jsonObject.getString("overview");
         posterPath = jsonObject.getString("poster_path");
         backdropPath = jsonObject.getString("backdrop_path");
+        releaseDate = jsonObject.getString("release_date");
         voteAverage = jsonObject.getDouble("vote_average");
         id = jsonObject.getInt("id");
     }
@@ -57,6 +59,10 @@ public class Movie {
 
     public String getBackdropPath() {
         return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
+    }
+
+    public String getReleaseDate() {
+        return "Release Date: " + releaseDate;
     }
 
     public Double getVoteAverage() {
