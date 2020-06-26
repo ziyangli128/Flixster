@@ -5,7 +5,7 @@ A read-only movie listing app using the Movie Database API.
 
 Flixster shows the latest movies currently playing in theaters. The app utilizes the Movie Database API to display images and basic information about these movies to the user.
 
-Time spent: 18 hours spent in total
+Time spent: 12 hours spent in total
 
 ## User Stories
 
