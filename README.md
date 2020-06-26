@@ -5,7 +5,7 @@ A read-only movie listing app using the Movie Database API.
 
 Flixster shows the latest movies currently playing in theaters. The app utilizes the Movie Database API to display images and basic information about these movies to the user.
 
-Time spent: 10 hours spent in total
+Time spent: 18 hours spent in total
 
 ## User Stories
 
@@ -34,9 +34,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/ziyangli128/Flixster/blob/master/Kapture%202020-06-26%20at%2012.27.38.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
