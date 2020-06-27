@@ -34,7 +34,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/ziyangli128/Flixster/blob/master/Kapture%202020-06-26%20at%2012.27.38.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/ziyangli128/Flixster/blob/master/GIF%20Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [Kap](https://getkap.co/).
 
